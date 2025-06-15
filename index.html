@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP curso</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  </head>
+
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: system-ui;
+      height: 5000px;
+    }
+
+    h1 {
+      position: fixed;
+      left: 50%;
+      top: 25%;
+      transform: translate(-50%, -50%);
+      font-size: 10vw;
+      text-wrap: nowrap;
+      text-align: center;
+      opacity: 0;
+    }
+   
+    canvas {
+      position: fixed;
+      left: 50%;
+      top: 15%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      aspect-ratio: 1068/600;
+
+    }
+    #container {
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+
+  <body>
+    <div id="container" class="">
+      <h1 id="title" class="">AirPods Pro</h1>
+      <canvas id="canvas"></canvas>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+  <script>
+    
+
+    gsap.registerPlugin(SplitText);
+    gsap.registerPlugin(ScrollTrigger);
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        duration: 1,
+        scrub: 1,
+      },
+    });
+    gsap.to("#title",{
+      opacity:1,
+
+      duration: 1,
+      ease: "power2.out",
+    }, "0.6");
+
+    gsap.to("#canvas", {
+      y: 20
+    })
+    gsap.to("#container", {
+      scale: 1.2,
+      ease: "power2.out",
+    },"0.7")
+    tl.to("#title", {
+      autoAlpha: 0,
+      scale: 1.5,
+      ease: "power2.out",
+    }, "<");
+
+  
+
+    const TOTAL_FRAMES = 65;
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = 600;
+    canvas.width = 1068;
+
+    const creteUrl = (frame) => {
+      const id = frame.toString().padStart(4, "0");
+      return `https://www.apple.com/105/media/us/airpods-pro/2022/d2deeb8e-83eb-48ea-9721-f567cf0fffa8/anim/hero/medium/${id}.png`;
+    };
+
+    const imagenes = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
+      let img = new Image();
+      img.src = creteUrl(i);
+      return img;
+    });
+
+    const airpods = {
+      frame: 0,
+    };
+
+    gsap.to(airpods, {
+      frame: TOTAL_FRAMES - 1,
+      ease: "none",
+      snap: "frame",
+      scrollTrigger: {
+        scrub: 0.2,
+      },
+      onUpdate: render,
+    });
+    imagenes[0].onload = () => render();
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(imagenes[airpods.frame], 0, 0);
+    }
+  </script>
+</html>
