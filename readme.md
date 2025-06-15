@@ -1,7 +1,6 @@
+<img width="957" alt="Captura de pantalla 2025-06-14 a la(s) 11 09 14 p m" src="https://github.com/user-attachments/assets/35f47038-9191-4567-be85-977381d28be2" />
 # GSAP Scroll Animation Demo
 
-![Demo del proyecto](./screenshot1.png)
-![Animación en acción](./screenshot2.png)
 
 Este proyecto es una demostración del uso de GSAP y ScrollTrigger para crear animaciones avanzadas basadas en el scroll. El objetivo principal fue animar la opacidad y escala de un título (`h1`) y renderizar una secuencia de imágenes sincronizadas con el desplazamiento de la página.
 
@@ -21,7 +20,8 @@ Este proyecto es una demostración del uso de GSAP y ScrollTrigger para crear an
 
 _Agrega aquí tus propias capturas de pantalla del proyecto en acción:_
 
-- `screenshot1.png`: Vista inicial del título y canvas.
-- `screenshot2.png`: Animación avanzada tras hacer scroll.
+<img width="655" alt="Captura de pantalla 2025-06-14 a la(s) 11 09 33 p m" src="https://github.com/user-attachments/assets/a503524a-8489-4360-901f-c0d3d7cdd848" />
+<img width="655" alt="Captura de pantalla 2025-06-14 a la(s) 11 09 28 p m" src="https://github.com/user-attachments/assets/c1a5d8ab-aa33-4d2d-b443-d057ae533e28" />
+
 
 ---
