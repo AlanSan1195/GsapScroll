@@ -51,7 +51,7 @@
     }
     .cont-header {
       position: fixed;
-      top:0;
+      top: 0;
       left: 0;
       width: 100%;
       height: 110px;
@@ -62,7 +62,6 @@
       backdrop-filter: blur(20px);
       mix-blend-mode: difference;
       border-bottom: 1px solid hsla(0, 0%, 38%, 0.613);
-
     }
     header {
       width: 900px;
@@ -80,12 +79,8 @@
       font-size: 25px;
       margin-top: 10px;
       text-wrap: nowrap;
-      align-items: center; 
+      align-items: center;
       gap: 20px;
-
-
-
-
     }
     .logo-appel {
       margin-right: 10px;
@@ -116,7 +111,7 @@
       font-size: 12px;
       font-weight: 200;
       opacity: 0.8;
-      font-family: system-ui, -apple-system, ;
+      font-family: system-ui, -apple-system;
     }
     button {
       display: flex;
@@ -137,15 +132,23 @@
       top: 25%;
       width: 100%;
     }
-   
-    .grid { 
+    #procesador-description {
+      position: fixed;
+      flex-direction: column;
+
+      left: 0;
+      height: 100%;
+      width: 100%;
+      top: 780px;
+    }
+
+    .grid {
       display: grid;
       position: fixed;
       align-items: center;
       justify-content: center;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
-      top: 700px;
       width: 100%;
       border: #808080 0.4px solid;
       scale: 0.9;
@@ -153,18 +156,16 @@
       background-color: #000;
     }
 
-      
     video {
       display: flex;
       justify-content: center;
       align-items: center;
       grid-column: 1;
-      height: 600px;
+      height: 500px;
       width: 100%;
       font-weight: 600;
       color: #808080;
       border-right: #808080 0.3px solid;
-
     }
     .description-procesador {
       display: flex;
@@ -174,51 +175,69 @@
       width: 100%;
       font-weight: 100;
     }
-     
-   
+
     #content-description {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
+      position: absolute;
+      top: 610px;
       width: 100%;
       height: 100%;
-      scale: 0.8;
-      border-top: #808080 0.3px solid;
-      top: 130%;
+      display: flex;
+      align-items: center;
+      z-index: 90;
+
     }
     .description {
       display: flex;
-      position: fixed;
       justify-content: center;
+      gap: 350px;
       align-items: center;
-      gap: 30px;
       width: 100%;
       height: 100%;
-      margin: 0px 20px;
     }
-    .images-container {
+
+    #airpod-inside-1 {
       display: flex;
-      flex-direction: column;
+      position: absolute;
+      top: 90%;
+      right: 0;
+      left: 0;
+      z-index: 99;
     }
+    /* #airpod-inside-2 {
+      display: flex;
+      position: absolute;
+      top: 600px;
+      right: 0;
+      left: 0;
+      border: #d81616 0.4px solid;
+      z-index: 99;
+      opacity: 0.7;
+      padding: 10px;
+    } */
     .airpod-size {
       margin: auto;
-      border: #808080 1px solid;
     }
     p {
       font-size: 22px;
       font-weight: 600;
       width: 300px;
       color: #808080;
-
     }
     #p-description {
       display: flex;
+      opacity: 0;
       align-items: center;
+      width: 250px;
+      padding: 0px 15px;
     }
     #p-description-2 {
       display: flex;
+      opacity: 0;
+
       align-items: center;
+      justify-content: center;
+      width: 250px;
+      padding: 0px 15px;
     }
     span {
       color: #fff;
@@ -226,7 +245,11 @@
     .special-span {
       color: #03ae28;
     }
-   
+    .description-text {
+      font-size: 17px;
+      font-weight: 600;
+      color: #808080;
+    }
   </style>
 
   <body>
@@ -274,64 +297,71 @@
       <h1 id="title" class="">AirPods Pro</h1>
       <canvas id="canvas"></canvas>
       <h1 id="mantra" class="mantra-subtitle">Una experiencia resonante.</h1>
-         <div id="procesador-description" class="grid">
+      <div id="procesador-description">
+        <div class="grid">
           <div>
-
-            <video  autoplay muted aria-label="El nuevo chip H2" width="500px" heigth="500px" 
-            src="/media/H2procesador.mp4"></video>
+            <video
+              autoplay
+              muted
+              aria-label="El nuevo chip H2"
+              width="500px"
+              heigth="500px"
+              src="/media/H2procesador.mp4"
+            ></video>
           </div>
           <div class="description-procesador">
             <p>
-              <span>El chip H2 
-            </span>trae más funcionalidades que nunca, y usa <span>algoritmos</span>algoritmos para
-              lograr una cancelación de ruido más inteligente, un sonido
-              tridimensional superior y una mayor duración de la batería. Justo lo
-              que querías escuchar.
-          </p>
-          </div>
-        </div> 
-     <div id="content-description">
-        <div class="description">
-          <div id ="p-description">
-            <p >
-              Gracias a la potencia de los
-              <span>algoritmos de adaptación, </span> el chip procesa el sonido
-              más rápido y ajusta el audio en el preciso momento en que lo
-              escuchas. Cada detalle se adapta a la forma específica de tu oreja,
-              para que disfrutes un
-              <span class="special-span">sonido de aún más alta fidelidad</span>.
+              <span>El chip H2 </span>trae más funcionalidades que nunca, y usa
+              <span>algoritmos</span>algoritmos para lograr una cancelación de
+              ruido más inteligente, un sonido tridimensional superior y una
+              mayor duración de la batería. Justo lo que querías escuchar.
             </p>
           </div>
-          <div class="images-container">
-
-            <img
-              src="https://www.apple.com/v/airpods-pro/m/images/overview/audio_airpod_guts_top__d2is2iiz9l6q_small_2x.jpg"
-              alt=" Estructura interna del Airpod Pro"
-              class="airpod-size"
-              width="200px"
-
-            />
-            <img
-              src="https://www.apple.com/v/airpods-pro/m/images/overview/audio_airpod_guts_bottom__bfet1uy1eg0y_small_2x.jpg"
-              alt=""
-              class="airpod-size"
-              width="200px"
-
-
-            />
-          </div>
-          <div id ="p-description-2"></div>
-          <p>
-            El controlador y el amplificador especialmente desarrollados usan el
-            chip H2 para reducir la distorsión durante la reproducción. Los
-            graves sonarán más profundos y los agudos mucho más nítidos a
-            cualquier volumen.
-          </p>
-          </di>
         </div>
-      </div> 
+        <div id="content-description">
+          <div class="description">
+            <div id="p-description">
+              <p class="description-text">
+                Gracias a la potencia de los
+                <span>algoritmos de adaptación, </span> el chip procesa el
+                sonido más rápido y ajusta el audio en el preciso momento en que
+                lo escuchas. Cada detalle se adapta a la forma específica de tu
+                oreja, para que disfrutes un
+                <span class="special-span"
+                  >sonido de aún más alta fidelidad</span
+                >.
+              </p>
+            </div>
+            <!--  -->
+            <div id="p-description-2">
+              <p class="description-text">
+                El controlador y el amplificador especialmente desarrollados
+                usan el chip H2 para reducir la distorsión durante la
+                reproducción. Los graves sonarán más profundos y los agudos
+                mucho más nítidos a cualquier volumen.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <img
+          id="airpod-inside-1"
+          src="https://www.apple.com/v/airpods-pro/m/images/overview/audio_airpod_guts_top__d2is2iiz9l6q_small_2x.jpg"
+          alt=" Estructura interna del Airpod Pro"
+          class="airpod-size"
+          width="300px"
+        />
+        <!-- <img
+          id="airpod-inside-2"
+          src="https://www.apple.com/v/airpods-pro/m/images/overview/audio_airpod_guts_bottom__bfet1uy1eg0y_small_2x.jpg"
+          alt=""
+          class="airpod-size"
+          width="300px"
+        /> -->
+      </div>
     </div>
   </body>
+  <!--  -->
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -343,7 +373,6 @@
       scrollTrigger: {
         duration: 1,
         scrub: 1,
-        
       },
     });
     gsap.to(
@@ -355,7 +384,7 @@
       },
       "0.6"
     );
-  
+
     gsap.to("#canvas", {
       y: 20,
     });
@@ -367,7 +396,6 @@
       },
       "0.7"
     );
-    
 
     tl.to(
       "#title",
@@ -375,10 +403,22 @@
         autoAlpha: 0,
         scale: 1.5,
         ease: "power2.out",
+        duration: 2,
       },
       "<"
     );
-      tl.to(
+    tl.to(
+      ".cont-header",
+      {
+        y: -45,
+        ease: "power2.out",
+        duration: 1,
+        // backdropFilter: "blur(500px)",
+      },
+      "<"
+    );
+
+    tl.to(
       "#mantra",
       {
         opacity: 1,
@@ -388,31 +428,17 @@
       },
       ">20"
     );
-      tl.to(
+    tl.to(
       "#mantra",
       {
+        scale: 1.8,
         opacity: 0,
-        duration: 2,
         ease: "power2.out",
-      }, ">22"
+        duration: 2,
+      },
+      ">35"
     );
-    tl.to("#procesador-description", {
-      y: -680,
-      ease: "power1.out",
-      duration: 4.5,
-    }, ">3")
-      tl.to(
-        ".cont-header",
-        {
-          y: -45,
-          ease: "power2.out",
-          duration: 1,
-          // backdropFilter: "blur(500px)",
-        },
-        "<"
-      );
-   
- 
+  
 
     const TOTAL_FRAMES = 65;
     const canvas = document.querySelector("canvas");
@@ -438,10 +464,10 @@
 
     gsap.to(airpods, {
       frame: TOTAL_FRAMES - 1,
-      ease: "power1.inOut",
+      ease: "power2.out",
       snap: "frame",
       scrollTrigger: {
-        scrub: 0.2,
+        scrub: 0.1,
       },
       onUpdate: render,
     });
@@ -451,9 +477,47 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(imagenes[airpods.frame], 0, 0);
     }
+
+    tl.to(
+      "#procesador-description",
+      {
+        y: -1260,
+        ease: "sine.inOut",
+        duration: 100,
+      },
+      ">6"
+    );
+    tl.to("#p-description", {
+      opacity: 1,
+      transform: "translateY(-190px)",
+      ease: "sine.out",
+      duration: 15,
+      //inserta 2 segundos despues de EMPEZAR la mas reciente animacion añadida
+    }, ">2");
+  
+    tl.to("#p-description", {
+      opacity: 0,
+      transform: "translateY(-220px)",
+      ease: "sine.out",
+      duration: 7,
+    }, ">");
+      tl.to("#p-description-2", {
+      opacity: 1,
+      transform: "translateY(-190px)",
+      ease: "sine.out",
+      duration: 15,
+      //inserta 2 segundos despues de EMPEZAR la mas reciente animacion añadida
+    }, ">2");
+  
+    tl.to("#p-description-2", {
+      opacity: 0,
+      transform: "translateY(-220px)",
+      ease: "sine.out",
+      duration: 7,
+    }, ">");
+
+    
+
+    // hay que quitar este
   </script>
 </html>
-
-
-
-<!-- tenemos la estructura echa del procesador y de la esructura del audifono, nos dimos cuenta que las medidas que usamos siempre se hicieron en un aumento de im navegador del 300% POR LO TANTO HAY QUE SUSTITUIR las medidas un 20% -->
