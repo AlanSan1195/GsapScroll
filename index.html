@@ -36,7 +36,7 @@
       left: 50%;
       top: 30%;
       transform: translate(-50%, -50%);
-      width: 80%;
+      width: 85%;
       aspect-ratio: 1068/600;
     }
     #container {
@@ -198,7 +198,7 @@
     #airpod-inside-1 {
       display: flex;
       position: absolute;
-      top: 90%;
+      top: 85%;
       right: 0;
       left: 0;
       z-index: 99;
@@ -403,7 +403,7 @@
         autoAlpha: 0,
         scale: 1.5,
         ease: "power2.out",
-        duration: 2,
+        duration: 20,
       },
       "<"
     );
@@ -412,7 +412,7 @@
       {
         y: -45,
         ease: "power2.out",
-        duration: 1,
+        duration: 10,
         // backdropFilter: "blur(500px)",
       },
       "<"
@@ -423,10 +423,10 @@
       {
         opacity: 1,
         scale: 1.5,
-        duration: 2,
+        duration: 20,
         ease: "power2.out",
       },
-      ">20"
+      ">850"
     );
     tl.to(
       "#mantra",
@@ -434,9 +434,9 @@
         scale: 1.8,
         opacity: 0,
         ease: "power2.out",
-        duration: 2,
+        duration: 100,
       },
-      ">35"
+      ">850"
     );
      tl.to(
       "#procesador-description",
@@ -451,7 +451,7 @@
       opacity: 1,
       transform: "translateY(-190px)",
       ease: "sine.out",
-      duration: 15,
+      duration: 200,
       //inserta 2 segundos despues de EMPEZAR la mas reciente animacion añadida
     }, ">2");
   
@@ -459,13 +459,13 @@
       opacity: 0,
       transform: "translateY(-220px)",
       ease: "sine.out",
-      duration: 7,
+      duration: 200,
     }, ">");
       tl.to("#p-description-2", {
       opacity: 1,
       transform: "translateY(-190px)",
       ease: "sine.out",
-      duration: 15,
+      duration: 200,
       //inserta 2 segundos despues de EMPEZAR la mas reciente animacion añadida
     }, ">2");
   
@@ -473,7 +473,7 @@
       opacity: 0,
       transform: "translateY(-220px)",
       ease: "sine.out",
-      duration: 7,
+      duration: 200,
     }, ">");
 
     
