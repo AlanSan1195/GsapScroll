@@ -438,6 +438,45 @@
       },
       ">35"
     );
+     tl.to(
+      "#procesador-description",
+      {
+        y: -1260,
+        ease: "sine.inOut",
+        duration: 600,
+      },
+      ">600"
+    );
+    tl.to("#p-description", {
+      opacity: 1,
+      transform: "translateY(-190px)",
+      ease: "sine.out",
+      duration: 15,
+      //inserta 2 segundos despues de EMPEZAR la mas reciente animacion añadida
+    }, ">2");
+  
+    tl.to("#p-description", {
+      opacity: 0,
+      transform: "translateY(-220px)",
+      ease: "sine.out",
+      duration: 7,
+    }, ">");
+      tl.to("#p-description-2", {
+      opacity: 1,
+      transform: "translateY(-190px)",
+      ease: "sine.out",
+      duration: 15,
+      //inserta 2 segundos despues de EMPEZAR la mas reciente animacion añadida
+    }, ">2");
+  
+    tl.to("#p-description-2", {
+      opacity: 0,
+      transform: "translateY(-220px)",
+      ease: "sine.out",
+      duration: 7,
+    }, ">");
+
+    
   
 
     const TOTAL_FRAMES = 65;
@@ -478,45 +517,7 @@
       ctx.drawImage(imagenes[airpods.frame], 0, 0);
     }
 
-    tl.to(
-      "#procesador-description",
-      {
-        y: -1260,
-        ease: "sine.inOut",
-        duration: 100,
-      },
-      ">6"
-    );
-    tl.to("#p-description", {
-      opacity: 1,
-      transform: "translateY(-190px)",
-      ease: "sine.out",
-      duration: 15,
-      //inserta 2 segundos despues de EMPEZAR la mas reciente animacion añadida
-    }, ">2");
-  
-    tl.to("#p-description", {
-      opacity: 0,
-      transform: "translateY(-220px)",
-      ease: "sine.out",
-      duration: 7,
-    }, ">");
-      tl.to("#p-description-2", {
-      opacity: 1,
-      transform: "translateY(-190px)",
-      ease: "sine.out",
-      duration: 15,
-      //inserta 2 segundos despues de EMPEZAR la mas reciente animacion añadida
-    }, ">2");
-  
-    tl.to("#p-description-2", {
-      opacity: 0,
-      transform: "translateY(-220px)",
-      ease: "sine.out",
-      duration: 7,
-    }, ">");
-
-    
+   
 
     // hay que quitar este
   </script>
