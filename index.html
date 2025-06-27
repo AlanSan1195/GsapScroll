@@ -30,6 +30,20 @@
       text-align: center;
       opacity: 0;
     }
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 200;
+      opacity: 0.8;
+      font-family: system-ui, -apple-system;
+    }
+    p {
+      font-size: 22px;
+      font-weight: 600;
+      width: 300px;
+      color: #808080;
+    }
     canvas {
       position: fixed;
 
@@ -105,14 +119,7 @@
       color: #fff;
       text-wrap: wrap;
     }
-    a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 200;
-      opacity: 0.8;
-      font-family: system-ui, -apple-system;
-    }
+
     button {
       display: flex;
       align-items: center;
@@ -178,21 +185,22 @@
 
     #content-description {
       position: absolute;
-      top: 610px;
+      display: flex;
+      justify-content: space-between;
+      top: 95%;
       width: 100%;
       height: 100%;
-      display: flex;
-      align-items: center;
       z-index: 90;
-
     }
     .description {
       display: flex;
       justify-content: center;
-      gap: 350px;
+      flex-direction: column;
       align-items: center;
-      width: 100%;
-      height: 100%;
+
+      margin: 0px 180px;
+      padding: 0px 15px;
+      text-wrap: pretty;
     }
 
     #airpod-inside-1 {
@@ -203,37 +211,39 @@
       left: 0;
       z-index: 99;
     }
-    /* #airpod-inside-2 {
+    #airpod-inside-2 {
       display: flex;
       position: absolute;
-      top: 600px;
+      top: 85%;
       right: 0;
       left: 0;
-      border: #d81616 0.4px solid;
-      z-index: 99;
-      opacity: 0.7;
-      padding: 10px;
-    } */
+      opacity: 0;
+      z-index: 90;
+    }
     .airpod-size {
       margin: auto;
     }
-    p {
-      font-size: 22px;
-      font-weight: 600;
-      width: 300px;
-      color: #808080;
-    }
+
     #p-description {
       display: flex;
-      opacity: 0;
-      align-items: center;
+      flex-direction: column;
+      opacity: 1;
       width: 250px;
       padding: 0px 15px;
+      background-color: #03ae28;
+    }
+    #text-1 {
+      opacity: 0;
+    }
+    #text-2 {
+      opacity: 0;
+    }
+    #text-3 {
+      opacity: 0;
     }
     #p-description-2 {
       display: flex;
-      opacity: 0;
-
+      opacity: 1;
       align-items: center;
       justify-content: center;
       width: 250px;
@@ -320,48 +330,54 @@
         </div>
         <div id="content-description">
           <div class="description">
-            <div id="p-description">
-              <p class="description-text">
-                Gracias a la potencia de los
-                <span>algoritmos de adaptación, </span> el chip procesa el
-                sonido más rápido y ajusta el audio en el preciso momento en que
-                lo escuchas. Cada detalle se adapta a la forma específica de tu
-                oreja, para que disfrutes un
-                <span class="special-span"
-                  >sonido de aún más alta fidelidad</span
-                >.
-              </p>
-            </div>
-            <!--  -->
-            <div id="p-description-2">
-              <p class="description-text">
-                El controlador y el amplificador especialmente desarrollados
-                usan el chip H2 para reducir la distorsión durante la
-                reproducción. Los graves sonarán más profundos y los agudos
-                mucho más nítidos a cualquier volumen.
-              </p>
-            </div>
+            <p id="text-1" class="description-text">
+              Gracias a la potencia de los
+              <span>algoritmos de adaptación, </span> el chip procesa el sonido
+              más rápido y ajusta el audio en el preciso momento en que lo
+              escuchas. Cada detalle se adapta a la forma específica de tu
+              oreja, para que disfrutes un
+              <span class="special-span">sonido de aún más alta fidelidad</span
+              >.
+            </p>
+            <p id="text-2" class="description-text">
+              <span>Los micrófonos orientados hacia adentro</span> funcionan con
+              algoritmos avanzados que reconocen y articulan mejor tu voz para
+              que
+              <span class="special-span"> todo suene mucho más natural</span> en
+              llamadas telefónicas y videollamadas.
+            </p>
+          </div>
+
+          <div id="text-3" class="description">
+            <p class="description-text">
+              <span
+                >El controlador y el amplificador especialmente desarrollados </span
+              >usan el chip H2 para reducir la distorsión durante la
+              reproducción.
+              <span class="special-span">
+                Los graves sonarán más profundos y los agudos mucho más nítidos
+              </span>
+              a cualquier volumen.
+            </p>
           </div>
         </div>
-
         <img
           id="airpod-inside-1"
           src="https://www.apple.com/v/airpods-pro/m/images/overview/audio_airpod_guts_top__d2is2iiz9l6q_small_2x.jpg"
           alt=" Estructura interna del Airpod Pro"
           class="airpod-size"
-          width="300px"
+          width="350px"
         />
-        <!-- <img
+        <img
           id="airpod-inside-2"
           src="https://www.apple.com/v/airpods-pro/m/images/overview/audio_airpod_guts_bottom__bfet1uy1eg0y_small_2x.jpg"
-          alt=""
+          alt=" Estructura interna del Airpod Pro"
           class="airpod-size"
-          width="300px"
-        /> -->
+          width="350px"
+        />
       </div>
     </div>
   </body>
-  <!--  -->
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -391,7 +407,7 @@
     gsap.to(
       "#container",
       {
-        scale: 1.2,
+        // scale: 1.2,
         ease: "power2.out",
       },
       "0.7"
@@ -413,7 +429,6 @@
         y: -45,
         ease: "power2.out",
         duration: 10,
-        // backdropFilter: "blur(500px)",
       },
       "<"
     );
@@ -438,7 +453,7 @@
       },
       ">850"
     );
-     tl.to(
+    tl.to(
       "#procesador-description",
       {
         y: -1260,
@@ -447,37 +462,6 @@
       },
       ">600"
     );
-    tl.to("#p-description", {
-      opacity: 1,
-      transform: "translateY(-190px)",
-      ease: "sine.out",
-      duration: 200,
-      //inserta 2 segundos despues de EMPEZAR la mas reciente animacion añadida
-    }, ">2");
-  
-    tl.to("#p-description", {
-      opacity: 0,
-      transform: "translateY(-220px)",
-      ease: "sine.out",
-      duration: 200,
-    }, ">");
-      tl.to("#p-description-2", {
-      opacity: 1,
-      transform: "translateY(-190px)",
-      ease: "sine.out",
-      duration: 200,
-      //inserta 2 segundos despues de EMPEZAR la mas reciente animacion añadida
-    }, ">2");
-  
-    tl.to("#p-description-2", {
-      opacity: 0,
-      transform: "translateY(-220px)",
-      ease: "sine.out",
-      duration: 200,
-    }, ">");
-
-    
-  
 
     const TOTAL_FRAMES = 65;
     const canvas = document.querySelector("canvas");
@@ -517,8 +501,59 @@
       ctx.drawImage(imagenes[airpods.frame], 0, 0);
     }
 
-   
+    tl.to(
+      "#text-1",
+      {
+        opacity: 1,
+        y: -200,
+        ease: "sine.out",
+        duration: 300,
+      },
+      ">"
+    );
 
-    // hay que quitar este
+    tl.to(
+      "#text-1",
+      {
+        opacity: 0,
+        y: -300,
+        ease: "sine.out",
+        duration: 400,
+      },
+      ">"
+    );
+    tl.to(
+      "#airpod-inside-1",
+      {
+        scale: 0.9,
+        opacity: 0,
+        ease: "sine.out",
+        duration: 300,
+      },
+      "<"
+    );
+   
+    // tl.to(
+    //   "#text-2",
+    //   {
+    //     opacity: 1,
+    //     y: -300,
+    //     ease: "sine.out",
+    //     duration: 700,
+    //   },
+    //   "<"
+    // );
+    //  tl.to(
+    //   "#airpod-inside-2",
+    //   {
+
+    //     opacity: 1,
+    //     ease: "sine.out",
+    //     duration: 600,
+
+    //   },
+    //   ">"
+    // );
+
   </script>
 </html>
