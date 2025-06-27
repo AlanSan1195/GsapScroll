@@ -128,7 +128,7 @@
       cursor: pointer;
       border: none;
       height: 20px;
-      width: full;
+      width: 100%;
       border-radius: 20px;
       padding: px 1px;
       font-size: 25px;
@@ -141,19 +141,17 @@
     }
     #procesador-description {
       position: fixed;
-      flex-direction: column;
-
       left: 0;
       height: 100%;
       width: 100%;
-      top: 780px;
+      top: 820px;
     }
 
     .grid {
       display: grid;
       position: fixed;
       align-items: center;
-      justify-content: center;
+
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
       width: 100%;
@@ -401,12 +399,18 @@
   <script>
     gsap.registerPlugin(SplitText);
     gsap.registerPlugin(ScrollTrigger);
+     gsap.to(".grid", {
+      scale: 1.1,
+      ease: "power2.out",
+
+    });
     const tl = gsap.timeline({
       scrollTrigger: {
         duration: 1,
         scrub: 1,
       },
     });
+   
     gsap.to(
       "#title",
       {
@@ -438,7 +442,6 @@
       "<"
     );
 
-
     tl.to(
       "#title",
       {
@@ -449,7 +452,7 @@
       },
       "<"
     );
-    
+
     tl.to(
       "#mantra",
       {
@@ -473,7 +476,7 @@
     tl.to(
       "#procesador-description",
       {
-        y: -1260,
+        y: -1290,
         ease: "sine.inOut",
         duration: 30000,
       },
@@ -558,7 +561,7 @@
         ease: "sine.out",
         duration: 6000,
       },
-      "<2000"
+      "<4000"
     );
     tl.to(
       "#text-2",
@@ -566,7 +569,7 @@
         y: -490,
         opacity: 0,
         ease: "sine.out",
-        duration: 6000,
+        duration: 9000,
       },
       ">"
     );
@@ -576,17 +579,16 @@
         scale: 0.8,
         opacity: 0,
         ease: "sine.out",
-        duration: 3000,
+        duration: 4000,
       },
       "<"
     );
     tl.to(
       "#airpod-inside-2",
       {
-
         opacity: 1,
         ease: "sine.out",
-        duration: 4000,
+        duration: 5000,
       },
       "<2000"
     );
@@ -596,7 +598,7 @@
         y: -350,
         opacity: 1,
         ease: "sine.out",
-        duration: 6000,
+        duration: 9000,
       },
       "<-200"
     );
@@ -606,24 +608,24 @@
       ease: "sine.out",
       duration: 5000,
     });
-    tl.to("#text-3", {
-      y: -450,
-      opacity: 0,
-      ease: "sine.out",
-      duration: 6000,
-    },"<-50");
+    tl.to(
+      "#text-3",
+      {
+        y: -450,
+        opacity: 0,
+        ease: "sine.out",
+        duration: 7000,
+      },
+      "<-50"
+    );
     tl.to(
       "#airpod-full",
       {
         opacity: 1,
         ease: "sine.out",
-        duration: 5000,
+        duration: 9000,
       },
       "<-200"
     );
-
-  
-    
-  
   </script>
 </html>
