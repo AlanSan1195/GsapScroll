@@ -44,15 +44,15 @@
       width: 300px;
       color: #808080;
     }
+
     canvas {
       position: fixed;
 
-      left: 50%;
-      top: 30%;
-      transform: translate(-50%, -50%);
-      width: 85%;
-      aspect-ratio: 1068/600;
+      top: -18%;
+      transform: translate(-0%, -1000%);
+      width: 100%;
     }
+
     #container {
       position: fixed;
       left: 0;
@@ -192,11 +192,11 @@
     }
     .description {
       display: flex;
-      justify-content: center;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
 
-      margin: 0px 140px;
+      margin: 0px 150px;
       padding: 0px 15px;
       text-wrap: pretty;
     }
@@ -204,31 +204,65 @@
     #airpod-inside-1 {
       display: flex;
       position: absolute;
-      top: 85%;
+      top: 88%;
+      scale: 1.1;
       right: 0;
-      left: 0;
+      left: -50px;
       z-index: 99;
     }
     #airpod-inside-2 {
       display: flex;
       position: absolute;
-      top: 85%;
+      scale: 1.1;
+      top: 88%;
       right: 0;
-      left: 0;
+      left: -50px;
       opacity: 0;
       z-index: 90;
     }
     #airpod-full {
       display: flex;
+      scale: 1.1;
       position: absolute;
-      top: 85%;
+      top: 88%;
       right: 0;
-      left: 0;
+      left: -50px;
       opacity: 0;
       z-index: 90;
     }
     .airpod-size {
       margin: auto;
+    }
+    .background_noise_1 {
+      position: fixed;
+      top: 40px;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0;
+    }
+    .background_noise_2 {
+      position: fixed;
+      top: 40px;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0;
+    }
+    .background_video {
+      position: fixed;
+      scale: 1.3;
+      top: 40px;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0;
     }
 
     #p-description {
@@ -309,6 +343,22 @@
         </div>
       </header>
     </div>
+    <video class="background_video" autoplay muted loop="true">
+      <source
+        src="https://www.apple.com/105/media/us/airpods-pro/2022/d2deeb8e-83eb-48ea-9721-f567cf0fffa8/anim/noise-reduction/medium_2x.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <!-- <img
+      class="background_noise_1"
+      src="https://www.apple.com/v/airpods-pro/m/images/overview/noise_reduction_endframe__cc0juowjdaia_small_2x.jpg"
+      alt="ruido 1"
+    />
+    <img
+      class="background_noise_2"
+      src="https://www.apple.com/v/airpods-pro/m/images/overview/noise_cancel_particle__e2ew4rzcyjee_small_2x.jpg"
+      alt="ruiodo 2"
+    /> -->
 
     <div id="container">
       <h1 id="title" class="">AirPods Pro</h1>
@@ -373,21 +423,21 @@
           src="https://www.apple.com/v/airpods-pro/m/images/overview/audio_airpod_guts_top__d2is2iiz9l6q_small_2x.jpg"
           alt=" Estructura interna del Airpod Pro"
           class="airpod-size"
-          width="350px"
+          width="300px"
         />
         <img
           id="airpod-inside-2"
           src="https://www.apple.com/v/airpods-pro/m/images/overview/audio_airpod_guts_bottom__bfet1uy1eg0y_small_2x.jpg"
           alt=" Estructura interna del Airpod Pro"
           class="airpod-size"
-          width="350px"
+          width="300px"
         />
         <img
           id="airpod-full"
           src="https://www.apple.com/v/airpods-pro/m/images/overview/audio_airpod__dni8q27q7tqq_medium_2x.jpg"
           alt=" Airpod Pro Derecho"
           class="airpod-size"
-          width="350px"
+          width="300px"
         />
       </div>
     </div>
@@ -399,10 +449,9 @@
   <script>
     gsap.registerPlugin(SplitText);
     gsap.registerPlugin(ScrollTrigger);
-     gsap.to(".grid", {
+    gsap.to(".grid", {
       scale: 1.1,
       ease: "power2.out",
-
     });
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -410,19 +459,21 @@
         scrub: 1,
       },
     });
-   
+
     gsap.to(
       "#title",
       {
         opacity: 1,
-        duration: 1,
+        duration: 2,
         ease: "power2.out",
       },
-      "0.6"
+      "1"
     );
 
     gsap.to("#canvas", {
       y: 20,
+      duration: 1,
+      ease: "power2.out",
     });
     gsap.to(
       "#container",
@@ -478,9 +529,9 @@
       {
         y: -1290,
         ease: "sine.inOut",
-        duration: 30000,
+        duration: 80000,
       },
-      ">40000"
+      ">180000"
     );
 
     const TOTAL_FRAMES = 65;
@@ -525,9 +576,9 @@
       "#text-1",
       {
         opacity: 1,
-        y: -200,
+        y: -250,
         ease: "sine.out",
-        duration: 6000,
+        duration: 10000,
       },
       // inserta 2 segundos despues de la ultima animacion
       ">-2"
@@ -537,9 +588,9 @@
       "#text-1",
       {
         opacity: 0,
-        y: -300,
+        y: -380,
         ease: "sine.out",
-        duration: 6000,
+        duration: 10000,
       },
       ">-100"
     );
@@ -549,7 +600,7 @@
         scale: 0.9,
         opacity: 0.5,
         ease: "sine.out",
-        duration: 9000,
+        duration: 17000,
       },
       "<-400"
     );
@@ -559,9 +610,9 @@
         y: -400,
         opacity: 1,
         ease: "sine.out",
-        duration: 6000,
+        duration: 12000,
       },
-      "<4000"
+      "<6000"
     );
     tl.to(
       "#text-2",
@@ -569,17 +620,17 @@
         y: -490,
         opacity: 0,
         ease: "sine.out",
-        duration: 9000,
+        duration: 13000,
       },
       ">"
     );
     tl.to(
       "#airpod-inside-1",
       {
-        scale: 0.8,
+        scale: 0.9,
         opacity: 0,
         ease: "sine.out",
-        duration: 4000,
+        duration: 8000,
       },
       "<"
     );
@@ -587,45 +638,57 @@
       "#airpod-inside-2",
       {
         opacity: 1,
+        scale: 0.9,
         ease: "sine.out",
-        duration: 5000,
+        duration: 18000,
       },
-      "<2000"
+      "<7000"
     );
     tl.to(
       "#text-3",
       {
-        y: -350,
+        y: -400,
         opacity: 1,
-        ease: "sine.out",
-        duration: 9000,
+
+        duration: 18000,
       },
-      "<-200"
+      "<"
     );
     tl.to("#airpod-inside-2", {
-      scale: 0.9,
+      scale: 1,
       opacity: 0,
       ease: "sine.out",
-      duration: 5000,
+      duration: 7000,
     });
     tl.to(
       "#text-3",
       {
         y: -450,
         opacity: 0,
-        ease: "sine.out",
-        duration: 7000,
+
+        duration: 8000,
       },
-      "<-50"
+      "<"
     );
     tl.to(
       "#airpod-full",
       {
         opacity: 1,
-        ease: "sine.out",
-        duration: 9000,
+        scale: 0.9,
+        ease: "power2.out",
+        duration: 13000,
       },
-      "<-200"
+      "<-300"
+    );
+    tl.to(
+      ".background_video",
+      {
+        opacity: 1,
+        scale: 1.0,
+        ease: "sine.out",
+        duration: 13200,
+      },
+      "<-300"
     );
   </script>
 </html>
