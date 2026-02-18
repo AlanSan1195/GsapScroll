@@ -8,15 +8,29 @@
   </head>
 
   <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
     body {
       background-color: #000;
       color: #fff;
       font-family: system-ui;
       height: 4000px;
       margin: 0;
+      padding: 0;
       overflow-x: hidden;
       display: flex;
-      width: screen;
+      width: 100%;
+      max-width: 100vw;
       flex-direction: column;
     }
 
@@ -47,10 +61,149 @@
 
     canvas {
       position: fixed;
+      left: 50%;
+      top: 37%;
+      transform: translate(-50%, -50%);
+      max-width: screen;
+      height: 100%;
 
-      top: -18%;
-      transform: translate(-0%, -1000%);
-      width: 100%;
+    }
+
+    /* Media queries para mobile */
+    @media (max-width: 768px) {
+      canvas {
+        top: 20%;
+        width: 100vw;
+        max-width: none;
+      }
+
+      h1 {
+        font-size: 15vw;
+        top: 30%;
+      }
+
+      .mantra-subtitle {
+        width: 90%;
+        font-size: 32px;
+      }
+
+      .cont-header {
+        height: auto;
+        min-height: 50px;
+        padding: 10px 0;
+      }
+
+      header {
+        width: 100%;
+        padding: 0 15px;
+        gap: 0;
+      }
+
+      /* Ocultar la primera fila de navegación (menú Apple con logo, Tienda, Mac, etc.) */
+      header > .access:first-of-type {
+        display: none;
+      }
+
+      /* Segunda fila con título y botón */
+      header > .access:last-of-type {
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-top: 0;
+      }
+
+      /* Ocultar links secundarios (Descripción, Especificaciones, Comprar link) */
+      header > .access:last-of-type > .access a:not(:last-child) {
+        display: none;
+      }
+
+      /* Mostrar solo el botón de comprar */
+      header > .access:last-of-type > .access {
+        gap: 0;
+      }
+
+      .title-element {
+        font-size: 16px;
+      }
+
+      button {
+        padding: 6px 14px;
+        height: auto;
+        font-size: 12px;
+        width: auto;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        width: 100%;
+        scale: 1;
+      }
+
+      video {
+        height: 250px;
+        border-right: none;
+        border-bottom: #808080 0.3px solid;
+      }
+
+      .description-procesador {
+        font-size: 16px;
+        padding: 20px;
+      }
+
+      .description-procesador p {
+        width: 100%;
+      }
+
+      #content-description {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .description {
+        margin: 10px;
+        padding: 10px;
+      }
+
+      .description-text {
+        font-size: 14px;
+        width: 100%;
+      }
+
+      #airpod-inside-1,
+      #airpod-inside-2,
+      #airpod-full {
+        left: 0;
+        right: 0;
+        width: 100%;
+      }
+
+      .airpod-size {
+        width: 80%;
+        max-width: 300px;
+      }
+
+      .footer-description {
+        font-size: 28px;
+      }
+
+      .footer-name {
+        font-size: 20px;
+      }
+
+      .gsap-name {
+        font-size: 20px;
+      }
+
+      .cont-footer {
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      p {
+        width: 100%;
+        max-width: 300px;
+      }
     }
 
     #container {
@@ -78,7 +231,8 @@
       border-bottom: 1px solid hsla(0, 0%, 38%, 0.613);
     }
     header {
-      width: 900px;
+      width: 100%;
+      max-width: 900px;
       display: flex;
       flex-direction: column;
       text-wrap: nowrap;
@@ -112,12 +266,14 @@
       left: 50%;
       top: 50%;
       width: 400px;
+      max-width: 90%;
       font-size: 55px;
       text-align: center;
       opacity: 0;
       font-weight: 600;
       color: #fff;
       text-wrap: wrap;
+      transform: translate(-50%, -50%);
     }
 
     button {
@@ -312,9 +468,10 @@
     .cont-footer {
       display: flex;
       flex-direction: column;
-      width: fit-content;
-      width: 1020px;
+      width: 100%;
+      max-width: 1020px;
       margin: auto;
+      padding: 0 20px;
     }
     .footer-name {
       color: #fff;
@@ -517,7 +674,7 @@
     );
 
     gsap.to("#canvas", {
-      y: 20,
+      y: 0,
       duration: 1,
       ease: "power2.out",
     });
@@ -584,8 +741,29 @@
     const canvas = document.querySelector("canvas");
     const ctx = canvas.getContext("2d");
 
-    canvas.height = 600;
-    canvas.width = 1068;
+    // Dimensiones originales de las imágenes
+    const ORIGINAL_WIDTH = 1068;
+    const ORIGINAL_HEIGHT = 600;
+
+    // Función para redimensionar el canvas según el viewport
+    function resizeCanvas() {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        const scale = window.innerWidth / ORIGINAL_WIDTH;
+        canvas.width = window.innerWidth;
+        canvas.height = ORIGINAL_HEIGHT * scale;
+      } else {
+        canvas.width = ORIGINAL_WIDTH;
+        canvas.height = ORIGINAL_HEIGHT;
+      }
+    }
+
+    // Redimensionar al cargar y al cambiar tamaño de ventana
+    resizeCanvas();
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      render();
+    });
 
     const creteUrl = (frame) => {
       const id = frame.toString().padStart(4, "0");
@@ -615,7 +793,8 @@
 
     function render() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(imagenes[airpods.frame], 0, 0);
+      // Dibujar imagen escalada al tamaño del canvas
+      ctx.drawImage(imagenes[airpods.frame], 0, 0, canvas.width, canvas.height);
     }
 
     tl.to(
